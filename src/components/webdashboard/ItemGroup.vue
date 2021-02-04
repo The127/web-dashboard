@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>group: {{ group }}</p>
+    <p>{{ group }}</p>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   name: "ItemGroup",
   data: function() {
   },
-  props: ['group']
+  props: ['postTitle']
 }
 </script>
 

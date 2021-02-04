@@ -4,22 +4,19 @@
     <div v-for="group in groups" :key="group.Id">
       blubb
       <p>{{ group.Id }}</p>
-      <GroupItem group="foo"></GroupItem>
+      <GroupItem ></GroupItem>
     </div>
   </div>
 </template>
 
-<script>
-import GroupItem from "@/components/webdashboard/GroupItem";
-export default {
-  components: {GroupItem}
-}
-</script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 
 <script>
+import GroupItem from "@/components/webdashboard/GroupItem";
+
 export default {
   name: "ItemGroups",
+  components: {GroupItem},
   data: function(){
     return {
       greeting: 'oi cunt ass',
