@@ -1,10 +1,7 @@
 <template>
   <div>
-    oof
     <div v-for="group in groups" :key="group.Id">
-      blubb
-      <p>{{ group.Id }}</p>
-      <GroupItem ></GroupItem>
+        <ItemGroup v-bind:group="group"></ItemGroup>
     </div>
   </div>
 </template>
@@ -12,11 +9,11 @@
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 
 <script>
-import GroupItem from "@/components/webdashboard/GroupItem";
+import ItemGroup from "@/components/webdashboard/ItemGroup";
 
 export default {
   name: "ItemGroups",
-  components: {GroupItem},
+  components: {ItemGroup},
   data: function(){
     return {
       greeting: 'oi cunt ass',
@@ -28,7 +25,6 @@ export default {
     this.$axios.get('http://localhost:10000/itemgroups')
         .then(function (response) {
           vm.groups = response.data
-          console.log(response.data)
         })
         .catch(function (error) {
           console.log(error)

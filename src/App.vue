@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="d-flex justify-content-center">
+      <h1>
+        WebDashboard
+      </h1>
+    </div>
+    <div class="container">
+      <ItemGroups/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ItemGroups from "@/components/webdashboard/ItemGroups";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ItemGroups,
   }
 }
 </script>
