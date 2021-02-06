@@ -39,7 +39,7 @@ export default {
   props: ['item'],
   created() {
     const vm = this
-    this.$axios.get('http://localhost:10000/items/' + vm.item.Id + '/subitems')
+    this.$axios.get('http://webdashboardapi.docker.the127.de/items/' + vm.item.Id + '/subitems')
         .then(function (response) {
           vm.subitems = response.data
           console.log(response.data)

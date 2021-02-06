@@ -24,7 +24,7 @@ export default {
   props: ['group'],
   created() {
     const vm = this
-    this.$axios.get('http://localhost:10000/itemgroups/' + vm.group.Id + '/items')
+    this.$axios.get('http://webdashboardapi.docker.the127.de/itemgroups/' + vm.group.Id + '/items')
         .then(function (response) {
           vm.items = response.data
           console.log(response.data)
