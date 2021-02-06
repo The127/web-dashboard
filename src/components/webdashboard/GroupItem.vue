@@ -1,29 +1,36 @@
 <template>
-    <div class="col-6">
-      {{ item.WebisteUrl }}
-      <b-card
-          style="border-radius: 100px"
-          overlay
-          :img-src="item.ImageUrl">
-        <div class="card-img-overlay text-white">
-          <div class="row justify-content-start overlay-dark py-3" style="margin-left: -20px; margin-right: -20px">
-            <div class="col-12 text-white text-left">
-              <a v-bind:href="'' + item.WebisteUrl" target="_blank">
-                {{ item.Title }}
-              </a>
+    <div class="col-6 text-left">
+      <!--<a v-bind:href="'' + item.WebisteUrl" target="_blank">-->
+        <b-card
+            :title="item.Title"
+            :img-src="item.ImageUrl"
+            img-top
+          >
+          <div class="card-img-overlay d-flex justify-content-between">
+            <div>
+              <img :src="item.IconUrl" class="item-icon">
             </div>
-            <div class="col-12 text-left text-muted">
-              {{ item.Description }}
+            <div class="item-buttons d-flex justify-content-center">
+              <Pencil fill-color="white" />
             </div>
           </div>
-        </div>
-      </b-card>
+          <b-card-text>
+            {{ item.Description }}
+          </b-card-text>
+
+        </b-card>
+      <!--</a>-->
     </div>
 </template>
 
 <script>
+import Pencil from 'vue-material-design-icons/Pencil.vue';
+
 export default {
   name: "GroupItem",
+  components: {
+    Pencil
+  },
   data: function(){
     return {
       subitems: []
@@ -45,8 +52,12 @@ export default {
 </script>
 
 <style scoped>
-
-.overlay-dark {
-  background-color: rgba(0, 0, 0, 0.5);
-}
+  .item-icon {
+    width: 2em;
+    height: 2em;
+  }
+  .item-buttons {
+    height: 2em;
+    background: black;
+  }
 </style>
