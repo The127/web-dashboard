@@ -22,7 +22,7 @@ export default {
   },
   created(){
     var vm = this
-    this.$axios.get('http://webdashboardapi.docker.the127.de/itemgroups')
+    this.$axios.get('http://localhost:10000/itemgroups')
         .then(function (response) {
           vm.groups = response.data
         })
