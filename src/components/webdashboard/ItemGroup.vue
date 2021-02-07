@@ -7,21 +7,27 @@
       </div>
       <b-button-toolbar>
         <b-input-group>
-          <b-form-input class="myInput" v-on:click="searchBoxClick" placeholder="search in group..."/>
+          <b-form-input class="myInput" v-on:click="searchBoxClick" placeholder="search items..."/>
           <b-input-group-append>
             <b-button :id="'group-search-' + group.Id" v-on:click="searchGroupButtonClick" class="search-button mr-1">
               <Magnify />
             </b-button>
             <b-tooltip :target="'group-search-' + group.Id" triggers="hover">
-              search this group
+              search items in this group
             </b-tooltip>
           </b-input-group-append>
         </b-input-group>
-        <b-button :id="'group-edit-' + group.Id" class="search-button">
+        <b-button :id="'group-edit-' + group.Id" class="search-button mr-1">
           <Pencil />
         </b-button>
         <b-tooltip :target="'group-edit-' + group.Id" triggers="hover">
           edit this group
+        </b-tooltip>
+        <b-button :id="'group-add-' + group.Id" class="search-button">
+          <Plus />
+        </b-button>
+        <b-tooltip :target="'group-add-' + group.Id" triggers="hover">
+          add new item to this group
         </b-tooltip>
       </b-button-toolbar>
     </div>
@@ -40,6 +46,7 @@ import GroupItem from "@/components/webdashboard/GroupItem";
 import AddItem from "@/components/webdashboard/AddItem";
 import Magnify from 'vue-material-design-icons/Magnify.vue';
 import Pencil from 'vue-material-design-icons/Pencil.vue';
+import Plus from 'vue-material-design-icons/Plus.vue';
 
 export default {
   name: "ItemGroup",
@@ -47,7 +54,8 @@ export default {
     AddItem,
     GroupItem,
     Magnify,
-    Pencil
+    Pencil,
+    Plus
   },
   data: function() {
     return {
@@ -90,7 +98,6 @@ export default {
   }
   .zoom-item {
     transition: transform .2s;
-    z-index: 1;
   }
   .zoom-item:hover {
     transform: scale(1.1);

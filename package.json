@@ -17,7 +17,8 @@
     "portal-vue": "^2.1.7",
     "vue-material-design-icons": "^4.11.0",
     "@popperjs/core": "^2.6.0",
-    "aos": "^1.1.0"
+    "aos": "^1.1.0",
+    "@luxdamore/vue-cursor-fx": "^1.5.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -1,22 +1,32 @@
 <template>
   <div id="app">
-    <div class="d-flex justify-content-between">
-      <h1>
-        WebDashboard
-      </h1>
-      <b-input-group>
-        <b-form-input class="myInput" v-on:click="searchBoxClick" placeholder="search groups..."/>
-        <b-input-group-append>
-          <b-button id="group-search" v-on:click="searchGroupButtonClick" class="search-button mr-1">
-            <Magnify />
-          </b-button>
-          <b-tooltip target="group-search" triggers="hover">
-            search groups
-          </b-tooltip>
-        </b-input-group-append>
-      </b-input-group>
-    </div>
     <div class="container">
+      <div class="d-flex justify-content-between">
+        <div>
+        <h1>
+          WebDashboard
+        </h1>
+        </div>
+        <div class="d-flex h-50">
+          <b-input-group class="mr-1">
+            <b-form-input class="myInput" v-on:click="searchBoxClick" placeholder="search groups..."/>
+            <b-input-group-append>
+              <b-button id="group-search" v-on:click="searchGroupButtonClick" class="search-button">
+                <Magnify />
+              </b-button>
+              <b-tooltip target="group-search" triggers="hover">
+                search groups
+              </b-tooltip>
+            </b-input-group-append>
+          </b-input-group>
+          <b-button id="group-add" class="search-button">
+            <Plus />
+          </b-button>
+          <b-tooltip target="group-add" triggers="hover">
+            add new group
+          </b-tooltip>
+        </div>
+      </div>
       <ItemGroups/>
     </div>
   </div>
@@ -24,13 +34,15 @@
 
 <script>
 import Magnify from 'vue-material-design-icons/Magnify.vue';
+import Plus from 'vue-material-design-icons/Plus.vue';
 import ItemGroups from "@/components/webdashboard/ItemGroups";
 
 export default {
   name: 'App',
   components: {
     ItemGroups,
-    Magnify
+    Magnify,
+    Plus
   },
   methods: {
     searchBoxClick: function (evt){
@@ -43,7 +55,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .myInput{
     background: transparent;
     -webkit-transition: background .2s linear;
