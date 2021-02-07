@@ -1,21 +1,54 @@
 <template>
-  <div>
-  <div class="d-flex">
-    {{ group.Title }}
-  </div>
-  <b-container style="overflow-x: auto">
-  <b-row class="flex-nowrap">
-    <GroupItem v-for="item in items" :key="item.Id" v-bind:item="item" />
-  </b-row>
-  </b-container>
+  <div class="my-3" data-aos="fade-up">
+    <b-card>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h4>{{ group.Title }}</h4>
+      </div>
+      <b-button-toolbar>
+        <b-input-group>
+          <b-form-input class="myInput" v-on:click="searchBoxClick" placeholder="search in group..."/>
+          <b-input-group-append>
+            <b-button :id="'group-search-' + group.Id" v-on:click="searchGroupButtonClick" class="search-button mr-1">
+              <Magnify />
+            </b-button>
+            <b-tooltip :target="'group-search-' + group.Id" triggers="hover">
+              search this group
+            </b-tooltip>
+          </b-input-group-append>
+        </b-input-group>
+        <b-button :id="'group-edit-' + group.Id" class="search-button">
+          <Pencil />
+        </b-button>
+        <b-tooltip :target="'group-edit-' + group.Id" triggers="hover">
+          edit this group
+        </b-tooltip>
+      </b-button-toolbar>
+    </div>
+    <b-container style="overflow-x: auto">
+      <b-row class="flex-nowrap item-row">
+        <GroupItem class="row-item zoom-item" v-for="item in items" :key="item.Id" :item="item" />
+        <AddItem class="row-item" :group-id="group.Id" />
+      </b-row>
+    </b-container>
+    </b-card>
   </div>
 </template>
 
 <script>
 import GroupItem from "@/components/webdashboard/GroupItem";
+import AddItem from "@/components/webdashboard/AddItem";
+import Magnify from 'vue-material-design-icons/Magnify.vue';
+import Pencil from 'vue-material-design-icons/Pencil.vue';
+
 export default {
   name: "ItemGroup",
-  components: {GroupItem},
+  components: {
+    AddItem,
+    GroupItem,
+    Magnify,
+    Pencil
+  },
   data: function() {
     return {
       items: []
@@ -27,15 +60,62 @@ export default {
     this.$axios.get('http://localhost:10000/itemgroups/' + vm.group.Id + '/items')
         .then(function (response) {
           vm.items = response.data
-          console.log(response.data)
         })
         .catch(function (error) {
           console.log(error)
         })
+  },
+  methods: {
+    searchGroupButtonClick: function (){
+
+    },
+    searchBoxClick: function (evt){
+      evt.target.setSelectionRange(0, evt.target.value.length)
+    }
   }
 }
 </script>
 
 <style scoped>
-
+  .item-row {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .row-item {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    padding: 0;
+  }
+  .zoom-item {
+    transition: transform .2s;
+    z-index: 1;
+  }
+  .zoom-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0.5em rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+  .myInput{
+    background: transparent;
+    -webkit-transition: background .2s linear;
+    -ms-transition: background .2s linear;
+    transition: background .2s linear;
+    border: none;
+    border-bottom: 1px solid gray;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .myInput:focus{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 1px solid gray;
+    box-shadow: none;
+  }
+  .search-button {
+    border-radius: 0;
+    border-style: none;
+  }
 </style>
