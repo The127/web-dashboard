@@ -1,5 +1,5 @@
 <template>
-  <div class="my-3" data-aos="fade-up">
+  <div class="my-3">
     <b-card>
     <div class="d-flex justify-content-between">
       <div>
@@ -55,7 +55,7 @@ export default {
     GroupItem,
     Magnify,
     Pencil,
-    Plus
+    Plus,
   },
   data: function() {
     return {

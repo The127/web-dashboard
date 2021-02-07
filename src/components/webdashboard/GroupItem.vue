@@ -124,7 +124,6 @@ export default {
   }
   .item-button:hover {
     background: rgba(255, 255, 255, 0.5);
-    color: black;
   }
   .overlay-dark{
     background: rgba(0, 0, 0, 0.5);
@@ -162,8 +161,5 @@ export default {
     -moz-transform: scale(1) rotate(0) translateX(10em) translateY(0) skewX(-30deg) skewY(0deg);
     -ms-transform: scale(1) rotate(0) translateX(10em) translateY(0) skewX(-30deg) skewY(0deg);
     transform: scale(1) rotate(0) translateX(10em) translateY(0) skewX(-30deg) skewY(0deg);
-  }
-  .ray-container-container:hover .ray-container {
-
   }
 </style>
